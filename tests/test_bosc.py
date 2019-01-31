@@ -6,7 +6,7 @@
 import pytest
 
 
-from bosc import bosc
+import bosc
 
 
 @pytest.fixture
