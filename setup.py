@@ -47,4 +47,7 @@ setup(
     url='https://github.com/benthomasson/bosc',
     version='0.1.0',
     zip_safe=False,
+    entry_points = {
+        'console_scripts': ['run_websocket=bosc.run_websocket:main'],
+    }
 )
