@@ -1,4 +1,7 @@
 from bottle import request, Bottle, abort, static_file
+from gevent.pywsgi import WSGIServer
+from geventwebsocket import WebSocketError
+from geventwebsocket.handler import WebSocketHandler
 app = Bottle()
 
 @app.route('/static/<filepath:path>')
@@ -22,9 +25,6 @@ def handle_websocket():
 
 
 def main():
-    from gevent.pywsgi import WSGIServer
-    from geventwebsocket import WebSocketError
-    from geventwebsocket.handler import WebSocketHandler
     server = WSGIServer(("0.0.0.0", 8080), app,
                         handler_class=WebSocketHandler)
     print('serving')
