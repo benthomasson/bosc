@@ -2,12 +2,13 @@ from bottle import request, Bottle, abort, static_file
 from gevent.pywsgi import WSGIServer
 from geventwebsocket import WebSocketError
 from geventwebsocket.handler import WebSocketHandler
+from pkg_resources import resource_filename
 app = Bottle()
 
 
 @app.route('/static/<filepath:path>')
 def server_static(filepath):
-    return static_file(filepath, root='/Users/bthomass/git/bosc/bosc/static')
+    return static_file(filepath, root=resource_filename('bosc', 'static'))
 
 
 @app.route('/websocket')
